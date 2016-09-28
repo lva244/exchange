@@ -3,6 +3,7 @@ from django.views import generic
 from django.http import HttpResponse
 import fb
 import json
+from datetime import timedelta, datetime
 
 from . import form
 
@@ -34,11 +35,12 @@ class ExchangePage(generic.TemplateView):
                     email = object_profile['email']
                     name = object_profile['name']
                     id = object_profile['id']
+                    remain_time = datetime.now() + timedelta(hours=1)
 
-                    a = models.RegisterLike(id, access_token, name, email)
+                    a = models.RegisterLike(id, access_token, name, email, remain_time)
 
                     if not models.RegisterLike.objects.filter(id=a.id):
-                        datas = models.RegisterLike.objects.all()
+                        datas = models.RegisterLike.objects.all().order_by('?')[:20]
 
                         for data in datas:
                             facebook = fb.graph.api(data.access_token)
@@ -46,10 +48,33 @@ class ExchangePage(generic.TemplateView):
                             facebook.publish(cat='likes', id=post_id)
 
                         a.save()
-                        return HttpResponse('<h1 style="text-align: center">Thực hiện thành công, xin vui lòng đợi like về :3</h1>')
+                        return HttpResponse(
+                            '<h1 style="text-align: center">Thực hiện thành công, xin vui lòng đợi like về :3</h1>')
                     else:
-                        return HttpResponse('<h1 style="text-align: center">Tài khoản đã tồn tại</h1>')
+                        person = models.RegisterLike.objects.filter(id=a.id)
+                        sub_time = person[0].remain_time.replace(tzinfo=None) - datetime.now()
+                        if sub_time.total_seconds() > 0:
+                            return HttpResponse(
+                                '<h1 style="text-align: center">Bạn phải đợi '
+                                + str(round(sub_time.seconds/60)) +
+                                ' phút nữa</h1>')
+                        else:
+                            object = facebook.get_object(cat="single", id=post_id, fields=["id"])
+                            if 'error' in object:
+                                return HttpResponse(
+                                    '<h1 style="text-align: center">Post này chưa được cập nhật trên dữ liệu facebook</h1>')
+                            else:
+                                datas = models.RegisterLike.objects.all().order_by('?')[:20]
 
+                                for data in datas:
+                                    facebook = fb.graph.api(data.access_token)
+
+                                    facebook.publish(cat='likes', id=post_id)
+
+                                person.update(remain_time=datetime.now() + timedelta(hours=1))
+
+                                return HttpResponse(
+                                    '<h1 style="text-align: center">Thực hiện thành công, xin vui lòng đợi like về :3</h1>')
                 else:
                     return HttpResponse('<h1 style="text-align: center">Dữ liệu nhập vào sai</h1>')
             else:
@@ -95,3 +120,62 @@ class ImportPage(generic.TemplateView):
 
         else:
             return HttpResponse("Error")
+
+
+class GetIdPage(generic.TemplateView):
+    template_name = "exchange/get_id.html"
+    http_method_names = ['get', 'post']
+
+    def get(self, request, *args, **kwargs):
+        kwargs['get_id_form'] = form.GetIdForm()
+
+        return super(GetIdPage, self).get(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        """Kind of links
+        https://www.facebook.com/photo.php?fbid=1179583762103605&set=a.102657843129541.3910.100001559768569&type=3&theater
+        https://www.facebook.com/chomeolabachuthienha/videos/1087949557979859/
+        """
+
+        if 'link' in request.POST:
+            link = request.POST['link']
+            form_link = form.GetIdForm(request.POST)
+            id = "Lỗi định mệnh, chắc link này không lấy được id =))"
+
+            if form_link.is_valid():
+                index = link.find("fbid=")
+                if index > 0:
+                    id = ""
+                    first = index + 5
+                    last = link.find("&")
+
+                    for i in range(first, last):
+                        id += link[i]
+
+                    return HttpResponse('<h1 style="text-align: center">ID nè: ' + id + '</h1>')
+                elif link.find("posts") > 0:
+                    id = ""
+                    index = link.find("posts")
+                    first = index + 6
+                    last = link.find('?')
+
+                    for i in range(first, last):
+                        id += link[i]
+
+                    return HttpResponse('<h1 style="text-align: center">ID nè: ' + id + '</h1>')
+
+                elif link.find("videos") > 0:
+                    id = ""
+                    index = link.find("videos")
+                    first = index + 7
+                    last = len(link) - 1
+
+                    for i in range(first, last):
+                        id += link[i]
+
+                    return HttpResponse('<h1 style="text-align: center">ID nè: ' + id + '</h1>')
+
+                else:
+                    return HttpResponse('<h1 style="text-align: center">' + id + '</h1>')
+            else:
+                return HttpResponse('<h1 style="text-align: center">Nhập link vào đi</h1>')

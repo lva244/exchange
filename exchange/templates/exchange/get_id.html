@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load staticfiles %}
+    {% load crispy_forms_tags %}
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <title>Get ID</title>
+</head>
+<body>
+    <br>
+    {% crispy get_id_form %}
+</body>
+</html>

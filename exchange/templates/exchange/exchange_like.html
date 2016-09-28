@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
     {% load staticfiles %}
     {% load crispy_forms_tags %}
 <head>
@@ -10,7 +10,51 @@
     <title>Exchange like</title>
 </head>
 <body>
-    <br>
-    {% crispy register_form %}
+    <div class="container">
+      <div class="jumbotron">
+          <h1 style="text-align: center">Trao đổi like</h1>
+          <h3>Hướng dẫn sử dụng</h3>
+          <p>
+             <strong>Bước 1: </strong> Click vào
+             <a href="https://goo.gl/GjE8S3" type="button" class="btn btn-outline btn-primary btn-xs" target="_blank">
+              <span class="glyphicon glyphicon-wrench"></span> Cài token
+            </a>
+              sau đó nhấn OK
+            <br>
+             <strong>Bước 2: </strong> Click vào
+             <a href="https://goo.gl/u2iRPr" type="button" class="btn btn-outline btn-success btn-xs" target="_blank">
+              <span class="glyphicon glyphicon-tag"></span> Lấy token
+             </a>
+              rồi copy toàn bộ Mã Truy Cập xong quay lại trang chủ paste xuống dưới
+              <br>
+             <strong>Bước 3: </strong> Click vào
+             <a href="http://localhost:8000/getid/" type="button" class="btn btn-warning btn-xs" target="_blank">
+              <span class="glyphicon glyphicon-search"></span> Lấy ID
+             </a>
+              rồi copy link của post muốn like vào và nhấn nút lấy ID. Copy ID và Paste xuống dưới phần Post ID
+          </p>
+          <br>
+            {% crispy register_form %}
+
+          <div id="waiting" style="display: none">
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped active" role="progressbar"
+              aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                Vui lòng chờ xử lí
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#submit-id-submit").click(function () {
+                $("#waiting").show();
+                $("#submit-id-submit").hide();
+            });
+        });
+    </script>
 </body>
 </html>

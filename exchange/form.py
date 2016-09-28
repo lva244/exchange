@@ -61,5 +61,26 @@ class ImportForm(forms.Form):
         self.helper.add_input(Submit('submit', 'Submit', css_class="btn-primary"))
         super(ImportForm, self).__init__(*args, **kwargs)
 
-    class Meta:
-        pass
+
+class GetIdForm(forms.Form):
+    alphanumeric = RegexValidator(r'^[0-9a-zA-Z]*$', 'Only alphanumeric characters are allowed.')
+    link = forms.CharField(
+        label='Link',
+        required=True
+    )
+
+    def __init__(self, *args, **kwargs):
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.form_class = 'form-horizontal'
+        self.helper.label_class = 'col-lg-2'
+        self.helper.field_class = 'col-lg-7'
+
+        self.helper.layout = Layout(
+            Field('link')
+        )
+
+        self.helper.add_input(Submit('submit', 'Lấy id', css_class="btn-primary"))
+        super(GetIdForm, self).__init__(*args, **kwargs)
+
+
