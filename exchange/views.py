@@ -157,7 +157,13 @@ class GetIdPage(generic.TemplateView):
                     id = ""
                     index = link.find("posts")
                     first = index + 6
-                    last = link.find('?')
+
+                    if link.find('?') > 0:
+                        last = link.find('?')
+                    elif link[len(link) - 1] != "/":
+                        last = len(link)
+                    else:
+                        last = len(link) - 1
 
                     for i in range(first, last):
                         id += link[i]
@@ -168,7 +174,13 @@ class GetIdPage(generic.TemplateView):
                     id = ""
                     index = link.find("videos")
                     first = index + 7
-                    last = len(link) - 1
+
+                    if link.find('?') > 0:
+                        last = link.find('?')
+                    elif link[len(link) - 1] != "/":
+                        last = len(link)
+                    else:
+                        last = len(link) - 1
 
                     for i in range(first, last):
                         id += link[i]
