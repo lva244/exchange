@@ -191,3 +191,7 @@ class GetIdPage(generic.TemplateView):
                     return HttpResponse('<h1 style="text-align: center">' + id + '</h1>')
             else:
                 return HttpResponse('<h1 style="text-align: center">Nhập link vào đi</h1>')
+
+
+class BarCodePage(generic.TemplateView):
+    template_name = "exchange/barcode.html"

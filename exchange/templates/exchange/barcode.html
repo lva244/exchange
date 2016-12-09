@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+    {% load staticfiles %}
+    {% load crispy_forms_tags %}
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <script type="text/javascript">
+      // Your Client ID can be retrieved from your project in the Google
+      // Developer Console, https://console.developers.google.com
+      var CLIENT_ID = '1073682444329-di9bfr8q9v3o1b8d4p6s2g251c511ucf.apps.googleusercontent.com';
+
+      var SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"];
+
+      var data_arr = [];
+      /**
+       * Check if current user has authorized this application.
+       */
+      function checkAuth() {
+        gapi.auth.authorize(
+          {
+            'client_id': CLIENT_ID,
+            'scope': SCOPES.join(' '),
+            'immediate': true
+          }, handleAuthResult);
+      }
+
+      /**
+       * Handle response from authorization server.
+       *
+       * @param {Object} authResult Authorization result.
+       */
+      function handleAuthResult(authResult) {
+        var authorizeDiv = document.getElementById('authorize-div');
+
+        if (authResult && !authResult.error) {
+          // Hide auth UI, then load client library.
+          authorizeDiv.style.display = 'none';
+          loadSheetsApi();
+        } else {
+          // Show auth UI, allowing the user to initiate authorization by
+          // clicking authorize button.
+          authorizeDiv.style.display = 'inline';
+        }
+      }
+
+      /**
+       * Initiate auth flow in response to user clicking authorize button.
+       *
+       * @param {Event} event Button click event.
+       */
+      function handleAuthClick(event) {
+        gapi.auth.authorize(
+          {client_id: CLIENT_ID, scope: SCOPES, immediate: false},
+          handleAuthResult);
+        return false;
+      }
+
+      /**
+       * Load Sheets API client library.
+       */
+      function loadSheetsApi() {
+        var discoveryUrl =
+            'https://sheets.googleapis.com/$discovery/rest?version=v4';
+        gapi.client.load(discoveryUrl).then(listMajors);
+      }
+
+      /**
+       * Print the names and majors of students in a sample spreadsheet:
+       * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+       */
+      function listMajors() {
+        var barcodeDiv = document.getElementById('barcode-input');
+        gapi.client.sheets.spreadsheets.values.get({
+          spreadsheetId: '1pyNh3AlQrqpGavPy-m1CQCPQzM8iX-w8KifYBMMFl_g',
+          range: 'Order Management!A2:AX',
+        }).then(function(response) {
+          var range = response.result;
+          if (range.values.length > 0) {
+            for (var i = 0; i < range.values.length; i++) {
+              var row = range.values[i];
+              // Print columns A and E, which correspond to indices 0 and 4.
+              appendPre(row);
+            }
+            barcodeDiv.style.display = 'inline';
+          } else {
+            appendPre('No data found.');
+          }
+        }, function(response) {
+          appendPre('Error: ' + response.result.error.message);
+        });
+      }
+
+      /**
+       * Append a pre element to the body containing the given message
+       * as its text node.
+       *
+       * @param {string} message Text to be placed in pre element.
+       */
+      function appendPre(message) {
+        data_arr.push(message);
+      }
+
+    </script>
+    <script src="https://apis.google.com/js/client.js?onload=checkAuth">
+    </script>
+    <title>Scan barcode</title>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <div id="barcode-input" style="display: none;">
+                <div class="form-group">
+                  <label for="barcode">Barcode:</label>
+                  <input type="text" class="form-control" id="barcode">
+                </div>
+                <p id="before-barcode">Mã đã nhập: </p>
+            </div>
+            <div id="authorize-div" style="display: none">
+              <span>Authorize access to Google Sheets API</span>
+              <!--Button for the user to click to initiate auth sequence -->
+              <button id="authorize-button" onclick="handleAuthClick(event)">
+                Authorize
+              </button>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Ngày</th>
+                <th>Mã KH & Tên</th>
+                <th>Mã Order</th>
+                <th>Loại hàng</th>
+                <th>Website</th>
+                <th>Tên sản phẩm</th>
+              </tr>
+            </thead>
+            <tbody id="list">
+            </tbody>
+        </table>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $("input").keypress(function (e) {
+            if (e.which == 13) {
+                var barcode = $("#barcode").val().trim();
+                $("#list").empty();
+                if (barcode != "") {
+                    //process quotation marks
+                    var index = barcode.indexOf('"');
+                    if(index>0)
+                    {
+                        barcode = barcode.substr(index + 1, barcode.length);
+                    }
+
+                    $("#before-barcode").text("Mã đã nhập: "+barcode);
+                    $("#barcode").val("");
+                    for (var i = 0; i < data_arr.length; i++) {
+                        if (data_arr[i][37]) {
+                            if (data_arr[i][37].includes(barcode)) {
+                                $("#list").append('<tr><td>' + data_arr[i][0] + '</td><td>' + data_arr[i][1] + '</td><td>' + data_arr[i][6] + '</td><td>' + data_arr[i][7] + '</td><td>' + data_arr[i][8] + '</td><td>' + data_arr[i][10] + '</td></tr>');
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
