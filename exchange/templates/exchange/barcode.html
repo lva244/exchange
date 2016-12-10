@@ -134,6 +134,7 @@
                 <th>Loại hàng</th>
                 <th>Website</th>
                 <th>Tên sản phẩm</th>
+                <th>SL</th>
               </tr>
             </thead>
             <tbody id="list">
@@ -159,7 +160,7 @@
                     for (var i = 0; i < data_arr.length; i++) {
                         if (data_arr[i][37]) {
                             if (data_arr[i][37].includes(barcode)) {
-                                $("#list").append('<tr><td>' + data_arr[i][0] + '</td><td>' + data_arr[i][1] + '</td><td>' + data_arr[i][6] + '</td><td>' + data_arr[i][7] + '</td><td>' + data_arr[i][8] + '</td><td>' + data_arr[i][10] + '</td></tr>');
+                                $("#list").append('<tr><td>' + data_arr[i][0] + '</td><td>' + data_arr[i][1] + '</td><td>' + data_arr[i][4] + '</td><td>' + data_arr[i][5] + '</td><td>' + data_arr[i][7] + '</td><td>' + data_arr[i][9] + '</td><td>' + data_arr[i][13] + '</td></tr>');
                             }
                         }
                     }
