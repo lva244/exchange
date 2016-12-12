@@ -5,13 +5,15 @@
 <head>
     <meta charset="UTF-8">
     <!-- Bootstrap core CSS -->
-    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript">
       // Your Client ID can be retrieved from your project in the Google
       // Developer Console, https://console.developers.google.com
       var CLIENT_ID = '1073682444329-di9bfr8q9v3o1b8d4p6s2g251c511ucf.apps.googleusercontent.com';
 
-      var SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"];
+      var SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly", "https://www.googleapis.com/auth/drive", "https://www.googleapis.com/auth/spreadsheets"];
 
       var data_arr = [];
       /**
@@ -74,7 +76,7 @@
         var barcodeDiv = document.getElementById('barcode-input');
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1pyNh3AlQrqpGavPy-m1CQCPQzM8iX-w8KifYBMMFl_g',
-          range: 'Order Management!A2:AX',
+          range: 'Order Management!A1:AZ',
         }).then(function(response) {
           var range = response.result;
           if (range.values.length > 0) {
@@ -101,7 +103,6 @@
       function appendPre(message) {
         data_arr.push(message);
       }
-
     </script>
     <script src="https://apis.google.com/js/client.js?onload=checkAuth">
     </script>
@@ -127,24 +128,49 @@
         </div>
         <table class="table table-striped">
             <thead>
-              <tr>
-                <th>Ngày</th>
-                <th>Mã KH & Tên</th>
-                <th>Mã Order</th>
-                <th>Loại hàng</th>
-                <th>Website</th>
-                <th>Tên sản phẩm</th>
-                <th>SL</th>
-              </tr>
+                <tr>
+                    <th>Ngày</th>
+                    <th>Mã KH & Tên</th>
+                    <th>Mã Order</th>
+                    <th>Mã order web</th>
+                    <th>Loại hàng</th>
+                    <th>Website</th>
+                    <th>Tên sản phẩm</th>
+                    <th>SL</th>
+                    <th>Check</th>
+                    <th>Note</th>
+                </tr>
             </thead>
             <tbody id="list">
             </tbody>
         </table>
+         <!-- Modal -->
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Vui lòng chờ</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="progress">
+                      <div class="progress-bar progress-bar-striped active" role="progressbar"
+                      aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                      </div>
+                    </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        <button id="push" class="btn btn-primary">Push to sheet</button>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>
         $("input").keypress(function (e) {
             if (e.which == 13) {
+                var currentOrder = "";
                 var barcode = $("#barcode").val().trim();
                 $("#list").empty();
                 if (barcode != "") {
@@ -157,15 +183,90 @@
 
                     $("#before-barcode").text("Mã đã nhập: "+barcode);
                     $("#barcode").val("");
-                    for (var i = 0; i < data_arr.length; i++) {
-                        if (data_arr[i][37]) {
-                            if (data_arr[i][37].includes(barcode)) {
-                                $("#list").append('<tr><td>' + data_arr[i][0] + '</td><td>' + data_arr[i][1] + '</td><td>' + data_arr[i][4] + '</td><td>' + data_arr[i][5] + '</td><td>' + data_arr[i][7] + '</td><td>' + data_arr[i][9] + '</td><td>' + data_arr[i][13] + '</td></tr>');
+
+                    var index_date =  data_arr[0].indexOf("Date");
+                    var index_name =  data_arr[0].indexOf("Mã KH & Tên");
+                    var index_order_code =  data_arr[0].indexOf("Mã order");
+                    var index_order_web =  data_arr[0].indexOf("Order Number");
+                    var index_type =  data_arr[0].indexOf("Loại hàng");
+                    var index_website =  data_arr[0].indexOf("Website");
+                    var index_name_item =  data_arr[0].indexOf("Tên Sản phẩm");
+                    var index_number =  data_arr[0].indexOf("SL");
+                    var index_check = data_arr[0].indexOf("Check");
+                    var index_note = data_arr[0].indexOf("Note");
+
+                    var index_tracking_code =  data_arr[0].indexOf("Tracking Code");
+
+                    //Loop to append to list
+                    for(var j = 0; j<data_arr.length; j++)
+                    {
+                        if(data_arr[j][index_tracking_code]!=null) {
+                            if (data_arr[j][index_tracking_code].includes(barcode)) {
+                                if (currentOrder != data_arr[j][index_order_code]) {
+                                    currentOrder = data_arr[j][index_order_code];
+
+                                    for (var i = 0; i < data_arr.length; i++) {
+                                        if (data_arr[i][index_order_code].includes(currentOrder)) {
+                                            if(data_arr[i][index_tracking_code]) {
+                                                if (data_arr[i][index_tracking_code].includes(barcode)) {
+                                                    if(data_arr[i][index_note]) {
+                                                        $("#list").append('<tr style="background: #16a1a4;"><td>' + data_arr[i][index_date] + '</td><td>' + data_arr[i][index_name] + '</td><td>' + data_arr[i][index_order_code] + '</td><td>' + data_arr[i][index_order_web] + '</td><td>' + data_arr[i][index_type] + '</td><td>' + data_arr[i][index_website] + '</td><td>' + data_arr[i][index_name_item] + '</td><td>' + data_arr[i][index_number] + '</td><td><input name="checkbox[]" id="cb' + i + '" type="checkbox" value="' + i + '" checked></td><td><input name="input[]" id="' + i + '" type="text" value="' + data_arr[i][index_note] + '"></td></tr>');
+                                                    } else {
+                                                        $("#list").append('<tr style="background: #16a1a4;"><td>' + data_arr[i][index_date] + '</td><td>' + data_arr[i][index_name] + '</td><td>' + data_arr[i][index_order_code] + '</td><td>' + data_arr[i][index_order_web] + '</td><td>' + data_arr[i][index_type] + '</td><td>' + data_arr[i][index_website] + '</td><td>' + data_arr[i][index_name_item] + '</td><td>' + data_arr[i][index_number] + '</td><td><input name="checkbox[]" id="cb' + i + '" type="checkbox" value="' + i + '" checked></td><td><input name="input[]" id="' + i + '" type="text" value=""></td></tr>');
+                                                    }
+                                                } else {
+                                                    if(data_arr[i][index_note]) {
+                                                        $("#list").append('<tr><td>' + data_arr[i][index_date] + '</td><td>' + data_arr[i][index_name] + '</td><td>' + data_arr[i][index_order_code] + '</td><td>' + data_arr[i][index_order_web] + '</td><td>' + data_arr[i][index_type] + '</td><td>' + data_arr[i][index_website] + '</td><td>' + data_arr[i][index_name_item] + '</td><td>' + data_arr[i][index_number] + '</td><td><input name="checkbox[]" id="cb' + i + '" type="checkbox" value="' + i + '" ' + data_arr[i][index_check] + '></td><td><input name="input[]" id="' + i + '" type="text" value="' + data_arr[i][index_note] + '"></td></tr>');
+                                                    } else {
+                                                        $("#list").append('<tr><td>' + data_arr[i][index_date] + '</td><td>' + data_arr[i][index_name] + '</td><td>' + data_arr[i][index_order_code] + '</td><td>' + data_arr[i][index_order_web] + '</td><td>' + data_arr[i][index_type] + '</td><td>' + data_arr[i][index_website] + '</td><td>' + data_arr[i][index_name_item] + '</td><td>' + data_arr[i][index_number] + '</td><td><input name="checkbox[]" id="cb' + i + '" type="checkbox" value="' + i + '" ' + data_arr[i][index_check] + '></td><td><input name="input[]" id="' + i + '" type="text" value=""></td></tr>');
+                                                    }
+                                                }
+                                            } else {
+                                                if(data_arr[i][index_note]) {
+                                                    $("#list").append('<tr><td>' + data_arr[i][index_date] + '</td><td>' + data_arr[i][index_name] + '</td><td>' + data_arr[i][index_order_code] + '</td><td>' + data_arr[i][index_order_web] + '</td><td>' + data_arr[i][index_type] + '</td><td>' + data_arr[i][index_website] + '</td><td>' + data_arr[i][index_name_item] + '</td><td>' + data_arr[i][index_number] + '</td><td><input name="checkbox[]" id="cb' + i + '" type="checkbox" value="' + i + '" ' + data_arr[i][index_check] + '></td><td><input name="input[]" id="' + i + '" type="text" value="' + data_arr[i][index_note] + '"></td></tr>');
+                                                } else {
+                                                    $("#list").append('<tr><td>' + data_arr[i][index_date] + '</td><td>' + data_arr[i][index_name] + '</td><td>' + data_arr[i][index_order_code] + '</td><td>' + data_arr[i][index_order_web] + '</td><td>' + data_arr[i][index_type] + '</td><td>' + data_arr[i][index_website] + '</td><td>' + data_arr[i][index_name_item] + '</td><td>' + data_arr[i][index_number] + '</td><td><input name="checkbox[]" id="cb' + i + '" type="checkbox" value="' + i + '" ' + data_arr[i][index_check] + '></td><td><input name="input[]" id="' + i + '" type="text" value=""></td></tr>');
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
+        });
+
+        $("#push").click(function () {
+            $("#myModal").modal("show");
+
+           $("input[name='checkbox[]']:checked").each(function() {
+               gapi.client.sheets.spreadsheets.values.update({
+                    spreadsheetId: '1pyNh3AlQrqpGavPy-m1CQCPQzM8iX-w8KifYBMMFl_g',
+                    range: 'Order Management!AY'+(Number($(this).val())+1),
+                    valueInputOption: 'USER_ENTERED',
+                    values: [ ["checked"] ]
+                }).then(function(response) {
+
+                });
+           });
+
+            $("input[name='input[]']").each(function() {
+                if($(this).val().trim() != "")
+                {
+                    gapi.client.sheets.spreadsheets.values.update({
+                        spreadsheetId: '1pyNh3AlQrqpGavPy-m1CQCPQzM8iX-w8KifYBMMFl_g',
+                        range: 'Order Management!AZ'+(Number(this.id)+1),
+                        valueInputOption: 'USER_ENTERED',
+                        values: [ [$(this).val().trim()] ]
+                    }).then(function(response) {
+
+                    });
+                }
+            });
+
+            $("#myModal").modal("hide");
         });
     </script>
 </body>
