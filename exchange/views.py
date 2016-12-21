@@ -195,3 +195,7 @@ class GetIdPage(generic.TemplateView):
 
 class BarCodePage(generic.TemplateView):
     template_name = "exchange/barcode.html"
+
+
+class ListPage(generic.TemplateView):
+    template_name = "exchange/list.html"
