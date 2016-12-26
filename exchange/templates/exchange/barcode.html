@@ -244,7 +244,7 @@
            $("input[name='checkbox[]']:checked").each(function() {
                gapi.client.sheets.spreadsheets.values.update({
                     spreadsheetId: '1pyNh3AlQrqpGavPy-m1CQCPQzM8iX-w8KifYBMMFl_g',
-                    range: 'Order Management!AY'+(Number($(this).val())+1),
+                    range: 'Order Management!BA'+(Number($(this).val())+1),
                     valueInputOption: 'USER_ENTERED',
                     values: [ ["checked"] ]
                 }).then(function(response) {
@@ -257,7 +257,7 @@
                 {
                     gapi.client.sheets.spreadsheets.values.update({
                         spreadsheetId: '1pyNh3AlQrqpGavPy-m1CQCPQzM8iX-w8KifYBMMFl_g',
-                        range: 'Order Management!AZ'+(Number(this.id)+1),
+                        range: 'Order Management!BB'+(Number(this.id)+1),
                         valueInputOption: 'USER_ENTERED',
                         values: [ [$(this).val().trim()] ]
                     }).then(function(response) {
