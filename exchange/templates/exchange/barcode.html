@@ -76,7 +76,7 @@
         var barcodeDiv = document.getElementById('barcode-input');
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1pyNh3AlQrqpGavPy-m1CQCPQzM8iX-w8KifYBMMFl_g',
-          range: 'Order Management!A1:AZ',
+          range: 'Order & tracking number!A1:BC',
         }).then(function(response) {
           var range = response.result;
           if (range.values.length > 0) {
@@ -132,11 +132,9 @@
                     <th>Ngày</th>
                     <th>Mã KH & Tên</th>
                     <th>Mã Order</th>
-                    <th>Mã order web</th>
                     <th>Loại hàng</th>
                     <th>Website</th>
                     <th>Tên sản phẩm</th>
-                    <th>SL</th>
                     <th>Check</th>
                     <th>Note</th>
                 </tr>
@@ -168,6 +166,25 @@
         <button id="push" class="btn btn-primary">Push to sheet</button>
     </div>
     <script>
+        var convertIndexToAlphabet = function (index) {
+            var secondNum = index - (26  * Math.floor(index/26));
+
+            var alphatbet = "A	B	C	D	E	F	G	H	I	J	K	L	M	N	O	P	Q	R	S	T	U	V	W	X	Y	Z";
+            var arr = alphatbet.split("	");
+
+            if(26 < index && index <= 52)
+            {
+                var firstSymbol = "A";
+            } else if (52 < index && index <= 78)
+            {
+                var firstSymbol = "B";
+            }
+
+            var secondSymbol = arr[secondNum];
+
+            return (firstSymbol+secondSymbol);
+        };
+
         $("input").keypress(function (e) {
             if (e.which == 13) {
                 var currentOrder = "";
@@ -186,53 +203,98 @@
 
                     var index_date =  data_arr[0].indexOf("Date");
                     var index_name =  data_arr[0].indexOf("Mã KH & Tên");
-                    var index_order_code =  data_arr[0].indexOf("Mã order");
-                    var index_order_web =  data_arr[0].indexOf("Order Number");
+                    var index_order_code =  data_arr[0].indexOf("Item ID fixed value");
                     var index_type =  data_arr[0].indexOf("Loại hàng");
                     var index_website =  data_arr[0].indexOf("Website");
-                    var index_name_item =  data_arr[0].indexOf("Tên Sản phẩm");
-                    var index_number =  data_arr[0].indexOf("SL");
-                    var index_check = data_arr[0].indexOf("Check");
-                    var index_note = data_arr[0].indexOf("Note");
+                    var index_name_item =  data_arr[0].indexOf("Tên sản phẩm");
 
-                    var index_tracking_code =  data_arr[0].indexOf("Tracking Code");
+                    var index_check;
+                    var index_note;
+
+                    var index_tracking_code_1 =  data_arr[0].indexOf("Tracking number 1");
+                    var index_tracking_code_2 =  data_arr[0].indexOf("Tracking number 2");
+                    var index_tracking_code_3 =  data_arr[0].indexOf("Tracking number 3");
+                    var index_tracking_code_4 =  data_arr[0].indexOf("Tracking number 4");
 
                     //Loop to append to list
                     for(var j = 0; j<data_arr.length; j++)
                     {
-                        if(data_arr[j][index_tracking_code]!=null) {
-                            if (data_arr[j][index_tracking_code].includes(barcode)) {
-                                if (currentOrder != data_arr[j][index_order_code]) {
-                                    currentOrder = data_arr[j][index_order_code];
+                       // if(data_arr[j][index_tracking_code]!=null) {
+                            if (data_arr[j][index_tracking_code_1] == barcode || data_arr[j][index_tracking_code_2] == barcode || data_arr[j][index_tracking_code_3] == barcode || data_arr[j][index_tracking_code_4] == barcode) {
+                                if (currentOrder != data_arr[j][index_order_code].substring(0, 6)) {
+                                    currentOrder = data_arr[j][index_order_code].substring(0, 6);
 
                                     for (var i = 0; i < data_arr.length; i++) {
                                         if (data_arr[i][index_order_code].includes(currentOrder)) {
-                                            if(data_arr[i][index_tracking_code]) {
-                                                if (data_arr[i][index_tracking_code].includes(barcode)) {
+                                                if (data_arr[i][index_tracking_code_1] == barcode || data_arr[i][index_tracking_code_2] == barcode || data_arr[i][index_tracking_code_3] == barcode || data_arr[i][index_tracking_code_4] == barcode) {
+
+                                                    //Check number column of tracking code
+                                                    if(data_arr[i][index_tracking_code_1] == barcode)
+                                                    {
+                                                        index_check = data_arr[0].indexOf("Check 1");
+                                                        index_note = data_arr[0].indexOf("Note 1");
+                                                    }
+
+                                                    if(data_arr[i][index_tracking_code_2] == barcode)
+                                                    {
+                                                        index_check = data_arr[0].indexOf("Check 2");
+                                                        index_note = data_arr[0].indexOf("Note 2");
+                                                    }
+
+                                                    if(data_arr[i][index_tracking_code_3] == barcode)
+                                                    {
+                                                        index_check = data_arr[0].indexOf("Check 3");
+                                                        index_note = data_arr[0].indexOf("Note 3");
+                                                    }
+
+                                                    if(data_arr[i][index_tracking_code_4] == barcode)
+                                                    {
+                                                        index_check = data_arr[0].indexOf("Check 4");
+                                                        index_note = data_arr[0].indexOf("Note 4");
+                                                    }
+
+                                                    convertIndexToAlphabet(index_check);
+
                                                     if(data_arr[i][index_note]) {
-                                                        $("#list").append('<tr style="background: #98e698;"><td>' + data_arr[i][index_date] + '</td><td>' + data_arr[i][index_name] + '</td><td>' + data_arr[i][index_order_code] + '</td><td>' + data_arr[i][index_order_web] + '</td><td>' + data_arr[i][index_type] + '</td><td>' + data_arr[i][index_website] + '</td><td>' + data_arr[i][index_name_item] + '</td><td>' + data_arr[i][index_number] + '</td><td><input name="checkbox[]" id="cb' + i + '" type="checkbox" value="' + i + '" checked></td><td><input name="input[]" id="' + i + '" type="text" value="' + data_arr[i][index_note] + '"></td></tr>');
+                                                        $("#list").append('<tr style="background: #98e698;">' +
+                                                                '<td>' + data_arr[i][index_date] + '</td>' +
+                                                                '<td>' + data_arr[i][index_name] + '</td>' +
+                                                                '<td>' + data_arr[i][index_order_code] + '</td>' +
+                                                                '<td>' + data_arr[i][index_type] + '</td>' +
+                                                                '<td>' + data_arr[i][index_website] + '</td>' +
+                                                                '<td>' + data_arr[i][index_name_item] + '</td>' +
+                                                                '<td><input name="checkbox[]" id="' + convertIndexToAlphabet(index_check) + '" type="checkbox" value="' + i + '" checked></td>' +
+                                                                '<td><input val="'+ convertIndexToAlphabet(index_note) +'" name="input[]" id="' + i + '" type="text" value="' + data_arr[i][index_note] + '"></td>' +
+                                                                '</tr>');
                                                     } else {
-                                                        $("#list").append('<tr style="background: #98e698;"><td>' + data_arr[i][index_date] + '</td><td>' + data_arr[i][index_name] + '</td><td>' + data_arr[i][index_order_code] + '</td><td>' + data_arr[i][index_order_web] + '</td><td>' + data_arr[i][index_type] + '</td><td>' + data_arr[i][index_website] + '</td><td>' + data_arr[i][index_name_item] + '</td><td>' + data_arr[i][index_number] + '</td><td><input name="checkbox[]" id="cb' + i + '" type="checkbox" value="' + i + '" checked></td><td><input name="input[]" id="' + i + '" type="text" value=""></td></tr>');
+                                                        $("#list").append('<tr style="background: #98e698;">' +
+                                                                '<td>' + data_arr[i][index_date] + '</td>' +
+                                                                '<td>' + data_arr[i][index_name] + '</td>' +
+                                                                '<td>' + data_arr[i][index_order_code] + '</td>' +
+                                                                '<td>' + data_arr[i][index_type] + '</td>' +
+                                                                '<td>' + data_arr[i][index_website] + '</td>' +
+                                                                '<td>' + data_arr[i][index_name_item] + '</td>' +
+                                                                '<td><input name="checkbox[]" id="' + convertIndexToAlphabet(index_check) + '" type="checkbox" value="' + i + '" checked></td>' +
+                                                                '<td><input val="'+ convertIndexToAlphabet(index_note) +'" name="input[]" id="' + i + '" type="text" value=""></td>' +
+                                                                '</tr>');
                                                     }
                                                 } else {
-                                                    if(data_arr[i][index_note]) {
-                                                        $("#list").append('<tr><td>' + data_arr[i][index_date] + '</td><td>' + data_arr[i][index_name] + '</td><td>' + data_arr[i][index_order_code] + '</td><td>' + data_arr[i][index_order_web] + '</td><td>' + data_arr[i][index_type] + '</td><td>' + data_arr[i][index_website] + '</td><td>' + data_arr[i][index_name_item] + '</td><td>' + data_arr[i][index_number] + '</td><td><input name="checkbox[]" id="cb' + i + '" type="checkbox" value="' + i + '" ' + data_arr[i][index_check] + '></td><td><input name="input[]" id="' + i + '" type="text" value="' + data_arr[i][index_note] + '"></td></tr>');
-                                                    } else {
-                                                        $("#list").append('<tr><td>' + data_arr[i][index_date] + '</td><td>' + data_arr[i][index_name] + '</td><td>' + data_arr[i][index_order_code] + '</td><td>' + data_arr[i][index_order_web] + '</td><td>' + data_arr[i][index_type] + '</td><td>' + data_arr[i][index_website] + '</td><td>' + data_arr[i][index_name_item] + '</td><td>' + data_arr[i][index_number] + '</td><td><input name="checkbox[]" id="cb' + i + '" type="checkbox" value="' + i + '" ' + data_arr[i][index_check] + '></td><td><input name="input[]" id="' + i + '" type="text" value=""></td></tr>');
-                                                    }
+                                                    $("#list").append('<tr>' +
+                                                            '<td>' + data_arr[i][index_date] + '</td>' +
+                                                            '<td>' + data_arr[i][index_name] + '</td>' +
+                                                            '<td>' + data_arr[i][index_order_code] + '</td>' +
+                                                            '<td>' + data_arr[i][index_type] + '</td>' +
+                                                            '<td>' + data_arr[i][index_website] + '</td>' +
+                                                            '<td>' + data_arr[i][index_name_item] + '</td>' +
+                                                            '<td><input name="checkbox[]" id="cb' + i + '" type="checkbox" onclick="return false;"></td>' +
+                                                            '<td><input name="input[]" id="' + i + '" type="text" value="" readonly></td>' +
+                                                            '</tr>');
                                                 }
-                                            } else {
-                                                if(data_arr[i][index_note]) {
-                                                    $("#list").append('<tr><td>' + data_arr[i][index_date] + '</td><td>' + data_arr[i][index_name] + '</td><td>' + data_arr[i][index_order_code] + '</td><td>' + data_arr[i][index_order_web] + '</td><td>' + data_arr[i][index_type] + '</td><td>' + data_arr[i][index_website] + '</td><td>' + data_arr[i][index_name_item] + '</td><td>' + data_arr[i][index_number] + '</td><td><input name="checkbox[]" id="cb' + i + '" type="checkbox" value="' + i + '" ' + data_arr[i][index_check] + '></td><td><input name="input[]" id="' + i + '" type="text" value="' + data_arr[i][index_note] + '"></td></tr>');
-                                                } else {
-                                                    $("#list").append('<tr><td>' + data_arr[i][index_date] + '</td><td>' + data_arr[i][index_name] + '</td><td>' + data_arr[i][index_order_code] + '</td><td>' + data_arr[i][index_order_web] + '</td><td>' + data_arr[i][index_type] + '</td><td>' + data_arr[i][index_website] + '</td><td>' + data_arr[i][index_name_item] + '</td><td>' + data_arr[i][index_number] + '</td><td><input name="checkbox[]" id="cb' + i + '" type="checkbox" value="' + i + '" ' + data_arr[i][index_check] + '></td><td><input name="input[]" id="' + i + '" type="text" value=""></td></tr>');
-                                                }
-                                            }
                                         }
                                     }
                                 }
                             }
-                        }
+                        //}
                     }
                 }
             }
@@ -244,11 +306,11 @@
            $("input[name='checkbox[]']:checked").each(function() {
                gapi.client.sheets.spreadsheets.values.update({
                     spreadsheetId: '1pyNh3AlQrqpGavPy-m1CQCPQzM8iX-w8KifYBMMFl_g',
-                    range: 'Order Management!BA'+(Number($(this).val())+1),
+                    range: 'Order & tracking number!'+$(this).attr('id')+(Number($(this).val())+1),
                     valueInputOption: 'USER_ENTERED',
                     values: [ ["checked"] ]
                 }).then(function(response) {
-
+                   
                 });
            });
 
@@ -257,7 +319,7 @@
                 {
                     gapi.client.sheets.spreadsheets.values.update({
                         spreadsheetId: '1pyNh3AlQrqpGavPy-m1CQCPQzM8iX-w8KifYBMMFl_g',
-                        range: 'Order Management!BB'+(Number(this.id)+1),
+                        range: 'Order & tracking number!'+$(this).attr('val')+(Number(this.id)+1),
                         valueInputOption: 'USER_ENTERED',
                         values: [ [$(this).val().trim()] ]
                     }).then(function(response) {
