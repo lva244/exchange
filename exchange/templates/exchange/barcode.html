@@ -191,6 +191,25 @@
                 var barcode = $("#barcode").val().trim();
                 $("#list").empty();
                 if (barcode != "") {
+		            var monthNames = ["Jan", "Feb", "March", "April", "May", "June",
+		              "July", "Aug", "Sep", "Oct", "Nov", "Dec"
+		            ];
+
+		            var new_date = new Date();
+		            var date = new_date.getDate();
+		            var month = monthNames[new_date.getMonth()];
+		            var year = new_date.getFullYear();
+		            var d = date + "-" + month + "-" + year;
+
+                	gapi.client.sheets.spreadsheets.values.append({
+	                    spreadsheetId: '18_0P23G7RIQeoWE6S9JG0KbYPGU29iwUuNCrAcD75hY',
+	                    range: 'Log!A1:B1',
+	                    valueInputOption: 'USER_ENTERED',
+	                    values: [ [d, barcode] ]
+	                }).then(function(response) {
+
+	                });
+
                     //process quotation marks
                     var index = barcode.indexOf('"');
                     if(index>0)
