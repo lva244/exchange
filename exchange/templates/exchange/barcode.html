@@ -301,16 +301,26 @@
         });
 
         $("#push").click(function () {
-            $("#myModal").modal("show");
+            var monthNames = ["Jan", "Feb", "March", "April", "May", "June",
+              "July", "Aug", "Sep", "Oct", "Nov", "Dec"
+            ];
+
+            var new_date = new Date();
+            var date = new_date.getDate();
+            var month = monthNames[new_date.getMonth()];
+            var year = new_date.getFullYear();
+            var d = date + "-" + month + "-" + year;
+
+           $("#myModal").modal("show");
 
            $("input[name='checkbox[]']:checked").each(function() {
                gapi.client.sheets.spreadsheets.values.update({
                     spreadsheetId: '1pyNh3AlQrqpGavPy-m1CQCPQzM8iX-w8KifYBMMFl_g',
                     range: 'Order & tracking number!'+$(this).attr('id')+(Number($(this).val())+1),
                     valueInputOption: 'USER_ENTERED',
-                    values: [ ["checked"] ]
+                    values: [ [d] ]
                 }).then(function(response) {
-                   
+
                 });
            });
 
