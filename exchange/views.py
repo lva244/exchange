@@ -2,8 +2,10 @@ from django.shortcuts import render
 from django.views import generic
 from django.http import HttpResponse
 import fb
-import json
+import os
 from datetime import timedelta, datetime
+from django.conf import settings
+import zxing
 
 from . import form
 
@@ -199,3 +201,38 @@ class BarCodePage(generic.TemplateView):
 
 class ListPage(generic.TemplateView):
     template_name = "exchange/list.html"
+
+
+# Create your views here.
+def handle_uploaded_file(file, filename):
+    if not os.path.exists(settings.MEDIA_ROOT):
+        os.mkdir(settings.MEDIA_ROOT)
+
+    with open(settings.MEDIA_ROOT + "\\" + filename, 'wb+') as destination:
+        for chunk in file.chunks():
+            destination.write(chunk)
+
+    return destination.name
+
+class BarcodeScanPage(generic.TemplateView):
+    template_name = "exchange/scan_barcode.html"
+    http_method_names = ['get', 'post']
+
+    def post(self, request, *args, **kwargs):
+        if "url_image" in request.FILES:
+            reader = zxing.BarCodeReader("zxing")
+            images = request.FILES.getlist("url_image")
+
+            results = []
+
+            for image in images:
+                file = handle_uploaded_file(image, str(image))
+                result = reader.decode(file)
+                if result != None:
+                    results.append(result.raw+"|"+str(image))
+            now_date = datetime.now()
+            response = HttpResponse(content_type='text/plain')
+            response['Content-Disposition'] = 'attachment; filename="'+str(now_date)+'.txt"'
+            for result in results:
+                response.write(result + "\r\n")
+            return response

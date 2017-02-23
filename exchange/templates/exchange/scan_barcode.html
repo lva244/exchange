@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+    {% load staticfiles %}
+    {% load crispy_forms_tags %}
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <form action="{{ request.build_absolute_uri }}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div id="mul_file">
+            <input is_first="true" type="file" name="url_image" multiple>
+        </div>
+        <br/>
+        <input type="submit" value="Upload File" />
+    </form>
+    <script>
+        var onChange = function (ele) {
+            if (ele.getAttribute("is_first") == "true")
+            {
+                $("input[is_first='true']").removeAttr("is_first");
+                $("#mul_file").append('<input onchange="onChange(this)" is_first="true" type="file" name="url_image">');
+            }
+        };
+    </script>
+</body>
