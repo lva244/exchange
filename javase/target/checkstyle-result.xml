@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.19">
+<file name="E:\mister_ship\zxing\zxing\javase\src\main\java\com\google\zxing\client\j2se\Base64Decoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\javase\src\main\java\com\google\zxing\client\j2se\BufferedImageLuminanceSource.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\javase\src\main\java\com\google\zxing\client\j2se\CommandLineEncoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\javase\src\main\java\com\google\zxing\client\j2se\CommandLineRunner.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\javase\src\main\java\com\google\zxing\client\j2se\DecoderConfig.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\javase\src\main\java\com\google\zxing\client\j2se\DecodeWorker.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\javase\src\main\java\com\google\zxing\client\j2se\EncoderConfig.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\javase\src\main\java\com\google\zxing\client\j2se\GUIRunner.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\javase\src\main\java\com\google\zxing\client\j2se\ImageReader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\javase\src\main\java\com\google\zxing\client\j2se\Java8Base64Decoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\javase\src\main\java\com\google\zxing\client\j2se\JAXBBase64Decoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\javase\src\main\java\com\google\zxing\client\j2se\MatrixToImageConfig.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\javase\src\main\java\com\google\zxing\client\j2se\MatrixToImageWriter.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\javase\src\main\java\com\google\zxing\HtmlAssetTranslator.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\javase\src\main\java\com\google\zxing\StringsResourceTranslator.java">
+</file>
+</checkstyle>

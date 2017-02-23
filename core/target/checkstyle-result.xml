@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.19">
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\aztec\AztecDetectorResult.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\aztec\AztecReader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\aztec\AztecWriter.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\aztec\decoder\Decoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\aztec\detector\Detector.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\aztec\encoder\AztecCode.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\aztec\encoder\BinaryShiftToken.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\aztec\encoder\Encoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\aztec\encoder\HighLevelEncoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\aztec\encoder\SimpleToken.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\aztec\encoder\State.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\aztec\encoder\Token.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\BarcodeFormat.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\Binarizer.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\BinaryBitmap.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\ChecksumException.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\AbstractDoCoMoResultParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\AddressBookAUResultParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\AddressBookDoCoMoResultParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\AddressBookParsedResult.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\BizcardResultParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\BookmarkDoCoMoResultParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\CalendarParsedResult.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\EmailAddressParsedResult.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\EmailAddressResultParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\EmailDoCoMoResultParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\ExpandedProductParsedResult.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\ExpandedProductResultParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\GeoParsedResult.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\GeoResultParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\ISBNParsedResult.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\ISBNResultParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\ParsedResult.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\ParsedResultType.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\ProductParsedResult.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\ProductResultParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\ResultParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\SMSMMSResultParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\SMSParsedResult.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\SMSTOMMSTOResultParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\SMTPResultParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\TelParsedResult.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\TelResultParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\TextParsedResult.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\URIParsedResult.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\URIResultParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\URLTOResultParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\VCardResultParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\VEventResultParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\VINParsedResult.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\VINResultParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\WifiParsedResult.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\client\result\WifiResultParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\common\BitArray.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\common\BitMatrix.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\common\BitSource.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\common\CharacterSetECI.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\common\DecoderResult.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\common\DefaultGridSampler.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\common\detector\MathUtils.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\common\detector\MonochromeRectangleDetector.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\common\detector\WhiteRectangleDetector.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\common\DetectorResult.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\common\GlobalHistogramBinarizer.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\common\GridSampler.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\common\HybridBinarizer.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\common\PerspectiveTransform.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\common\reedsolomon\GenericGF.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\common\reedsolomon\GenericGFPoly.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\common\reedsolomon\ReedSolomonDecoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\common\reedsolomon\ReedSolomonEncoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\common\reedsolomon\ReedSolomonException.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\common\StringUtils.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\datamatrix\DataMatrixReader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\datamatrix\DataMatrixWriter.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\datamatrix\decoder\BitMatrixParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\datamatrix\decoder\DataBlock.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\datamatrix\decoder\DecodedBitStreamParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\datamatrix\decoder\Decoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\datamatrix\decoder\Version.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\datamatrix\detector\Detector.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\datamatrix\encoder\ASCIIEncoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\datamatrix\encoder\Base256Encoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\datamatrix\encoder\C40Encoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\datamatrix\encoder\DataMatrixSymbolInfo144.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\datamatrix\encoder\DefaultPlacement.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\datamatrix\encoder\EdifactEncoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\datamatrix\encoder\Encoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\datamatrix\encoder\EncoderContext.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\datamatrix\encoder\ErrorCorrection.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\datamatrix\encoder\HighLevelEncoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\datamatrix\encoder\SymbolInfo.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\datamatrix\encoder\SymbolShapeHint.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\datamatrix\encoder\TextEncoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\datamatrix\encoder\X12Encoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\DecodeHintType.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\Dimension.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\EncodeHintType.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\FormatException.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\InvertedLuminanceSource.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\LuminanceSource.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\maxicode\decoder\BitMatrixParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\maxicode\decoder\DecodedBitStreamParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\maxicode\decoder\Decoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\maxicode\MaxiCodeReader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\multi\ByQuadrantReader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\multi\GenericMultipleBarcodeReader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\multi\MultipleBarcodeReader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\multi\qrcode\detector\MultiDetector.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\multi\qrcode\detector\MultiFinderPatternFinder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\multi\qrcode\QRCodeMultiReader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\MultiFormatReader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\MultiFormatWriter.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\NotFoundException.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\CodaBarReader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\CodaBarWriter.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\Code128Reader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\Code128Writer.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\Code39Reader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\Code39Writer.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\Code93Reader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\Code93Writer.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\EAN13Reader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\EAN13Writer.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\EAN8Reader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\EAN8Writer.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\EANManufacturerOrgSupport.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\ITFReader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\ITFWriter.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\MultiFormatOneDReader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\MultiFormatUPCEANReader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\OneDimensionalCodeWriter.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\OneDReader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\AbstractRSSReader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\DataCharacter.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\expanded\BitArrayBuilder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\expanded\decoders\AbstractExpandedDecoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\expanded\decoders\AI013103decoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\expanded\decoders\AI01320xDecoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\expanded\decoders\AI01392xDecoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\expanded\decoders\AI01393xDecoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\expanded\decoders\AI013x0x1xDecoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\expanded\decoders\AI013x0xDecoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\expanded\decoders\AI01AndOtherAIs.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\expanded\decoders\AI01decoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\expanded\decoders\AI01weightDecoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\expanded\decoders\AnyAIDecoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\expanded\decoders\BlockParsedResult.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\expanded\decoders\CurrentParsingState.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\expanded\decoders\DecodedChar.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\expanded\decoders\DecodedInformation.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\expanded\decoders\DecodedNumeric.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\expanded\decoders\DecodedObject.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\expanded\decoders\FieldParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\expanded\decoders\GeneralAppIdDecoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\expanded\ExpandedPair.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\expanded\ExpandedRow.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\expanded\RSSExpandedReader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\FinderPattern.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\Pair.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\RSS14Reader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\rss\RSSUtils.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\UPCAReader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\UPCAWriter.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\UPCEANExtension2Support.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\UPCEANExtension5Support.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\UPCEANExtensionSupport.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\UPCEANReader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\UPCEANWriter.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\UPCEReader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\oned\UPCEWriter.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\decoder\BarcodeMetadata.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\decoder\BarcodeValue.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\decoder\BoundingBox.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\decoder\Codeword.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\decoder\DecodedBitStreamParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\decoder\DetectionResult.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\decoder\DetectionResultColumn.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\decoder\DetectionResultRowIndicatorColumn.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\decoder\ec\ErrorCorrection.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\decoder\ec\ModulusGF.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\decoder\ec\ModulusPoly.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\decoder\PDF417CodewordDecoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\decoder\PDF417ScanningDecoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\detector\Detector.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\detector\PDF417DetectorResult.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\encoder\BarcodeMatrix.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\encoder\BarcodeRow.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\encoder\Compaction.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\encoder\Dimensions.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\encoder\PDF417.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\encoder\PDF417ErrorCorrection.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\encoder\PDF417HighLevelEncoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\PDF417Common.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\PDF417Reader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\PDF417ResultMetadata.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\pdf417\PDF417Writer.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\PlanarYUVLuminanceSource.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\decoder\BitMatrixParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\decoder\DataBlock.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\decoder\DataMask.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\decoder\DecodedBitStreamParser.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\decoder\Decoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\decoder\ErrorCorrectionLevel.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\decoder\FormatInformation.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\decoder\Mode.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\decoder\QRCodeDecoderMetaData.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\decoder\Version.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\detector\AlignmentPattern.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\detector\AlignmentPatternFinder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\detector\Detector.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\detector\FinderPattern.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\detector\FinderPatternFinder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\detector\FinderPatternInfo.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\encoder\BlockPair.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\encoder\ByteMatrix.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\encoder\Encoder.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\encoder\MaskUtil.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\encoder\MatrixUtil.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\encoder\QRCode.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\QRCodeReader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\qrcode\QRCodeWriter.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\Reader.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\ReaderException.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\Result.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\ResultMetadataType.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\ResultPoint.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\ResultPointCallback.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\RGBLuminanceSource.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\Writer.java">
+</file>
+<file name="E:\mister_ship\zxing\zxing\core\src\main\java\com\google\zxing\WriterException.java">
+</file>
+</checkstyle>

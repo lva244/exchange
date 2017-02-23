@@ -1,0 +1,47 @@
+
+*****************************************************
+Summary
+-------
+Generated at: 2017-02-22T17:33:49+07:00
+
+Notes: 0
+Binaries: 0
+Archives: 1
+Standards: 16
+
+Apache Licensed: 16
+Generated Documents: 0
+
+JavaDocs are generated, thus a license header is optional.
+Generated files do not require license headers.
+
+0 Unknown Licenses
+
+Archives:
+
+ + javase.jar
+ 
+*****************************************************
+  Files with Apache License headers will be marked AL
+  Binary files (which do not require any license headers) will be marked B
+  Compressed archives will be marked A
+  Notices, licenses etc. will be marked N
+  A     javase.jar
+  AL    pom.xml
+  AL    src/main/java/com/google/zxing/client/j2se/Base64Decoder.java
+  AL    src/main/java/com/google/zxing/client/j2se/BufferedImageLuminanceSource.java
+  AL    src/main/java/com/google/zxing/client/j2se/CommandLineEncoder.java
+  AL    src/main/java/com/google/zxing/client/j2se/CommandLineRunner.java
+  AL    src/main/java/com/google/zxing/client/j2se/DecoderConfig.java
+  AL    src/main/java/com/google/zxing/client/j2se/DecodeWorker.java
+  AL    src/main/java/com/google/zxing/client/j2se/EncoderConfig.java
+  AL    src/main/java/com/google/zxing/client/j2se/GUIRunner.java
+  AL    src/main/java/com/google/zxing/client/j2se/ImageReader.java
+  AL    src/main/java/com/google/zxing/client/j2se/Java8Base64Decoder.java
+  AL    src/main/java/com/google/zxing/client/j2se/JAXBBase64Decoder.java
+  AL    src/main/java/com/google/zxing/client/j2se/MatrixToImageConfig.java
+  AL    src/main/java/com/google/zxing/client/j2se/MatrixToImageWriter.java
+  AL    src/main/java/com/google/zxing/HtmlAssetTranslator.java
+  AL    src/main/java/com/google/zxing/StringsResourceTranslator.java
+ 
+*****************************************************
